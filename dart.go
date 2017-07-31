@@ -5,6 +5,7 @@ import (
 	"log"
 	"math"
 	"math/rand"
+	"runtime"
 )
 
 //each dart thrown is in the range (0.0, 0.0) -> (1.0, 1.0)
@@ -20,6 +21,10 @@ type Result struct {
 	misses int
 }
 
+func init() {
+	fmt.Println("num cpus = ", runtime.NumCPU())
+	runtime.GOMAXPROCS(runtime.NumCPU())
+}
 func main() {
 	var threadcount int
 	var totalcount int
